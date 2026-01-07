@@ -63,5 +63,5 @@ jobs:
           mod: build/libs/${{ steps.properties.outputs.mod_id }}-neoforge-${{ steps.version.outputs.version }}.jar
           extra-mods: |
             anvilcraft:1.21.1-1.5.0+hotfix.1572
-            rhino:2101.2.7-build.81
+            rhino:2101.2.7-build.81+Rhino-1.21
             kubejs:2101.7.2-build.348
