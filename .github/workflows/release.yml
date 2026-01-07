@@ -86,6 +86,10 @@ jobs:
           curseforge-id: ${{ steps.properties.outputs.curseforge_id }}
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
+          dependencies: |
+            kubejs@2101.7.2-build.348(required){modrinth:umyGl7zF}{curseforge:238086}
+            anvilcraft@1.21.1-1.5.0(required){modrinth:vuISAWPc}{curseforge:986251}
+
           files: |
             build/libs/${{ steps.properties.outputs.mod_id }}-neoforge-${{ steps.version.outputs.version }}.jar
             build/libs/${{ steps.properties.outputs.mod_id }}-neoforge-${{ steps.version.outputs.version }}-sources.jar

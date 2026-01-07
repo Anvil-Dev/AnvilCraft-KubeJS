@@ -9,4 +9,8 @@ dependencies {
     // AnvilCraft
     implementation(libs.anvilcraft) { transitive = false }
     interfaceInjectionData(libs.anvilcraft) { transitive = false }
+
+    // KubeJS
+    implementation(libs.rhino){ transitive = false }
+    implementation(libs.kubejs){ transitive = false }
 }

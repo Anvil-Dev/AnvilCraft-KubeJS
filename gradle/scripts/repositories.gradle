@@ -16,4 +16,12 @@ repositories {
             includeGroup "com.tterrag.registrate"
         }
     }
+    maven { // KubeJS, Rhino
+        name = "Saps Maven"
+        url = "https://maven.latvian.dev/releases"
+        content {
+            includeGroup "dev.latvian.mods"
+            includeGroup "dev.latvian.apps"
+        }
+    }
 }
