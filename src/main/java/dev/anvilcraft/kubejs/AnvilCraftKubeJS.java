@@ -49,6 +49,7 @@ public class AnvilCraftKubeJS implements KubeJSPlugin {
     @Override
     public void registerClasses(ClassFilter filter) {
         filter.allow("dev.dubhe.anvilcraft");
+        filter.allow("dev.anvilcraft.kubejs");
     }
 
     @Override
