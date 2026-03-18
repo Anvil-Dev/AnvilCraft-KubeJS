@@ -13,4 +13,7 @@ dependencies {
     // KubeJS
     implementation(libs.rhino){ transitive = false }
     implementation(libs.kubejs){ transitive = false }
+
+    // ProbeJS
+    runtimeOnly(libs.probejs)
 }

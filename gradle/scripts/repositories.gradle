@@ -24,4 +24,11 @@ repositories {
             includeGroup "dev.latvian.apps"
         }
     }
+    maven {// ProbeJS
+        name = "CurseForge Maven"
+        url = "https://beta.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }

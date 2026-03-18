@@ -1,6 +1,5 @@
 package dev.anvilcraft.kubejs;
 
-import com.mojang.logging.LogUtils;
 import dev.anvilcraft.kubejs.recipe.JewelCraftingRecipeSchema;
 import dev.anvilcraft.kubejs.recipe.anvil.BlockCompressRecipeSchema;
 import dev.anvilcraft.kubejs.recipe.anvil.BlockCrushRecipeSchema;
@@ -29,23 +28,8 @@ import dev.latvian.mods.kubejs.plugin.ClassFilter;
 import dev.latvian.mods.kubejs.plugin.KubeJSPlugin;
 import dev.latvian.mods.kubejs.recipe.schema.RecipeSchemaRegistry;
 import dev.latvian.mods.kubejs.script.BindingRegistry;
-import net.minecraft.resources.ResourceLocation;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.common.Mod;
-import org.slf4j.Logger;
 
-@Mod(AnvilCraftKubeJS.MOD_ID)
 public class AnvilCraftKubeJS implements KubeJSPlugin {
-    public static final String MOD_ID = "anvilcraft_kubejs";
-    public static final Logger LOGGER = LogUtils.getLogger();
-
-    public AnvilCraftKubeJS(IEventBus modEventBus, ModContainer modContainer) {
-    }
-
-    public static ResourceLocation of(String path) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
-    }
     @Override
     public void registerClasses(ClassFilter filter) {
         filter.allow("dev.dubhe.anvilcraft");
