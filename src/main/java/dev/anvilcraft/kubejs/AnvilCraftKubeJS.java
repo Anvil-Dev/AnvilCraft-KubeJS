@@ -15,6 +15,8 @@ import dev.anvilcraft.kubejs.recipe.mineral.MineralFountainChanceRecipeSchema;
 import dev.anvilcraft.kubejs.recipe.mineral.MineralFountainRecipeSchema;
 import dev.anvilcraft.kubejs.recipe.multiblock.MultiblockRecipeSchema;
 import dev.anvilcraft.kubejs.recipe.transform.MobTransformRecipeSchema;
+import dev.anvilcraft.kubejs.wrapper.BlockWrapper;
+import dev.anvilcraft.lib.recipe.component.ChanceBlockState;
 import dev.anvilcraft.lib.recipe.component.ChanceItemStack;
 import dev.anvilcraft.lib.recipe.outcome.IRecipeOutcome;
 import dev.anvilcraft.lib.recipe.predicate.IRecipePredicate;
@@ -28,17 +30,22 @@ import dev.latvian.mods.kubejs.plugin.ClassFilter;
 import dev.latvian.mods.kubejs.plugin.KubeJSPlugin;
 import dev.latvian.mods.kubejs.recipe.schema.RecipeSchemaRegistry;
 import dev.latvian.mods.kubejs.script.BindingRegistry;
+import dev.latvian.mods.kubejs.script.TypeWrapperRegistry;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.block.Block;
 
 public class AnvilCraftKubeJS implements KubeJSPlugin {
     @Override
     public void registerClasses(ClassFilter filter) {
         filter.allow("dev.dubhe.anvilcraft");
+        filter.allow("dev.anvilcraft.lib");
         filter.allow("dev.anvilcraft.kubejs");
     }
 
     @Override
     public void registerBindings(BindingRegistry bindings) {
         bindings.add("ChanceItemStack", ChanceItemStack.class);
+        bindings.add("ChanceBlockState", ChanceBlockState.class);
         bindings.add("BlockPredicateWithState", BlockPredicateWithState.class);
 
         bindings.add("ValueFunction", NumericTagValuePredicate.ValueFunction.class);
@@ -80,5 +87,10 @@ public class AnvilCraftKubeJS implements KubeJSPlugin {
         registry.register(AnvilCraft.of("mineral_fountain_chance"), MineralFountainChanceRecipeSchema.SCHEMA);
 
         registry.register(AnvilCraft.of("jewel_crafting"), JewelCraftingRecipeSchema.SCHEMA);
+    }
+
+    @Override
+    public void registerTypeWrappers(TypeWrapperRegistry registry) {
+        registry.register(Block.class, BlockWrapper::fromString);
     }
 }

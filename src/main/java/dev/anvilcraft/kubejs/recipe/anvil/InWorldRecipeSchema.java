@@ -1,5 +1,8 @@
 package dev.anvilcraft.kubejs.recipe.anvil;
 
+import dev.anvilcraft.kubejs.recipe.AnvilCraftKubeRecipe;
+import dev.anvilcraft.kubejs.recipe.AnvilCraftRecipeComponents;
+import dev.anvilcraft.kubejs.recipe.IDRecipeConstructor;
 import dev.anvilcraft.lib.recipe.outcome.IRecipeOutcome;
 import dev.anvilcraft.lib.recipe.outcome.SetBlock;
 import dev.anvilcraft.lib.recipe.outcome.SpawnItem;
@@ -10,9 +13,6 @@ import dev.anvilcraft.lib.recipe.predicate.item.HasItem;
 import dev.anvilcraft.lib.recipe.predicate.item.HasItemIngredient;
 import dev.anvilcraft.lib.recipe.trigger.IRecipeTrigger;
 import dev.dubhe.anvilcraft.AnvilCraft;
-import dev.anvilcraft.kubejs.recipe.AnvilCraftKubeRecipe;
-import dev.anvilcraft.kubejs.recipe.AnvilCraftRecipeComponents;
-import dev.anvilcraft.kubejs.recipe.IDRecipeConstructor;
 import dev.dubhe.anvilcraft.recipe.anvil.outcome.DamageAnvil;
 import dev.dubhe.anvilcraft.recipe.anvil.predicate.block.HasCauldron;
 import dev.latvian.mods.kubejs.recipe.RecipeKey;
@@ -125,7 +125,7 @@ public interface InWorldRecipeSchema {
         }
 
         public InWorldKubeRecipe hasItem(String itemTag) {
-            ResourceLocation rl = ResourceLocation.tryParse(itemTag);
+            ResourceLocation rl = ResourceLocation.tryParse(itemTag.substring(1));
             if (rl == null) {
                 ConsoleJS.SERVER.error("Invalid item tag: " + itemTag);
                 return this;
@@ -135,7 +135,7 @@ public interface InWorldRecipeSchema {
         }
 
         public InWorldKubeRecipe hasItem(Vec3 offset, String itemTag) {
-            ResourceLocation rl = ResourceLocation.tryParse(itemTag);
+            ResourceLocation rl = ResourceLocation.tryParse(itemTag.substring(1));
             if (rl == null) {
                 ConsoleJS.SERVER.error("Invalid item tag: " + itemTag);
                 return this;
@@ -145,7 +145,7 @@ public interface InWorldRecipeSchema {
         }
 
         public InWorldKubeRecipe hasItem(double x, double y, double z, String itemTag) {
-            ResourceLocation rl = ResourceLocation.tryParse(itemTag);
+            ResourceLocation rl = ResourceLocation.tryParse(itemTag.substring(1));
             if (rl == null) {
                 ConsoleJS.SERVER.error("Invalid item tag: " + itemTag);
                 return this;
@@ -168,7 +168,7 @@ public interface InWorldRecipeSchema {
         }
 
         public InWorldKubeRecipe hasItemIngredient(String itemTag) {
-            ResourceLocation rl = ResourceLocation.tryParse(itemTag);
+            ResourceLocation rl = ResourceLocation.tryParse(itemTag.substring(1));
             if (rl == null) {
                 ConsoleJS.SERVER.error("Invalid item tag: " + itemTag);
                 return this;
@@ -178,7 +178,7 @@ public interface InWorldRecipeSchema {
         }
 
         public InWorldKubeRecipe hasItemIngredient(Vec3 offset, String itemTag) {
-            ResourceLocation rl = ResourceLocation.tryParse(itemTag);
+            ResourceLocation rl = ResourceLocation.tryParse(itemTag.substring(1));
             if (rl == null) {
                 ConsoleJS.SERVER.error("Invalid item tag: " + itemTag);
                 return this;
@@ -188,7 +188,7 @@ public interface InWorldRecipeSchema {
         }
 
         public InWorldKubeRecipe hasItemIngredient(double x, double y, double z, String itemTag) {
-            ResourceLocation rl = ResourceLocation.tryParse(itemTag);
+            ResourceLocation rl = ResourceLocation.tryParse(itemTag.substring(1));
             if (rl == null) {
                 ConsoleJS.SERVER.error("Invalid item tag: " + itemTag);
                 return this;
@@ -223,7 +223,7 @@ public interface InWorldRecipeSchema {
         }
 
         public InWorldKubeRecipe hasBlock(String blockTag) {
-            ResourceLocation rl = ResourceLocation.tryParse(blockTag);
+            ResourceLocation rl = ResourceLocation.tryParse(blockTag.substring(1));
             if (rl == null) {
                 ConsoleJS.SERVER.error("Invalid block tag: " + blockTag);
                 return this;
@@ -233,7 +233,7 @@ public interface InWorldRecipeSchema {
         }
 
         public InWorldKubeRecipe hasBlock(Vec3 offset, String blockTag) {
-            ResourceLocation rl = ResourceLocation.tryParse(blockTag);
+            ResourceLocation rl = ResourceLocation.tryParse(blockTag.substring(1));
             if (rl == null) {
                 ConsoleJS.SERVER.error("Invalid block tag: " + blockTag);
                 return this;
@@ -243,7 +243,7 @@ public interface InWorldRecipeSchema {
         }
 
         public InWorldKubeRecipe hasBlock(double x, double y, double z, String blockTag) {
-            ResourceLocation rl = ResourceLocation.tryParse(blockTag);
+            ResourceLocation rl = ResourceLocation.tryParse(blockTag.substring(1));
             if (rl == null) {
                 ConsoleJS.SERVER.error("Invalid block tag: " + blockTag);
                 return this;
@@ -302,7 +302,7 @@ public interface InWorldRecipeSchema {
         }
 
         public InWorldKubeRecipe hasBlockIngredient(String blockTag) {
-            ResourceLocation rl = ResourceLocation.tryParse(blockTag);
+            ResourceLocation rl = ResourceLocation.tryParse(blockTag.substring(1));
             if (rl == null) {
                 ConsoleJS.SERVER.error("Invalid block tag: " + blockTag);
                 return this;
@@ -312,7 +312,7 @@ public interface InWorldRecipeSchema {
         }
 
         public InWorldKubeRecipe hasBlockIngredient(Vec3 offset, String blockTag) {
-            ResourceLocation rl = ResourceLocation.tryParse(blockTag);
+            ResourceLocation rl = ResourceLocation.tryParse(blockTag.substring(1));
             if (rl == null) {
                 ConsoleJS.SERVER.error("Invalid block tag: " + blockTag);
                 return this;
@@ -322,7 +322,7 @@ public interface InWorldRecipeSchema {
         }
 
         public InWorldKubeRecipe hasBlockIngredient(double x, double y, double z, String blockTag) {
-            ResourceLocation rl = ResourceLocation.tryParse(blockTag);
+            ResourceLocation rl = ResourceLocation.tryParse(blockTag.substring(1));
             if (rl == null) {
                 ConsoleJS.SERVER.error("Invalid block tag: " + blockTag);
                 return this;
