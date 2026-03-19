@@ -1,17 +1,18 @@
 package dev.anvilcraft.kubejs.recipe.anvil;
 
-import dev.anvilcraft.lib.recipe.component.BlockStatePredicate;
-import dev.anvilcraft.lib.recipe.component.ChanceBlockState;
-import dev.dubhe.anvilcraft.AnvilCraft;
 import dev.anvilcraft.kubejs.recipe.AnvilCraftKubeRecipe;
 import dev.anvilcraft.kubejs.recipe.IDRecipeConstructor;
 import dev.anvilcraft.kubejs.recipe.components.BlockStatePredicateComponent;
 import dev.anvilcraft.kubejs.recipe.components.ChanceBlockStateComponent;
+import dev.anvilcraft.kubejs.wrapper.TagKeyWrapper;
+import dev.anvilcraft.lib.recipe.component.BlockStatePredicate;
+import dev.anvilcraft.lib.recipe.component.ChanceBlockState;
+import dev.dubhe.anvilcraft.AnvilCraft;
 import dev.latvian.mods.kubejs.recipe.RecipeKey;
 import dev.latvian.mods.kubejs.recipe.component.ComponentRole;
 import dev.latvian.mods.kubejs.recipe.schema.KubeRecipeFactory;
 import dev.latvian.mods.kubejs.recipe.schema.RecipeSchema;
-import net.minecraft.tags.TagKey;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.Block;
 
 import java.util.ArrayList;
@@ -28,10 +29,11 @@ public interface BlockSmearRecipeSchema {
             return this;
         }
 
-        @SafeVarargs
-        public final BlockSmearKubeRecipe inputTag(TagKey<Block>... block) {
+        public final BlockSmearKubeRecipe inputTag(String... block) {
             this.computeIfAbsent(INPUTS, ArrayList::new)
-                .addAll(Arrays.stream(block).map(tag -> BlockStatePredicate.builder().of(tag).build()).toList());
+                .addAll(Arrays.stream(block).map(tag -> BlockStatePredicate.builder().of(
+                    TagKeyWrapper.fromString(tag, Registries.BLOCK)
+                ).build()).toList());
             this.save();
             return this;
         }

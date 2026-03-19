@@ -1,13 +1,14 @@
 package dev.anvilcraft.kubejs.recipe.anvil;
 
-import dev.anvilcraft.lib.recipe.component.ChanceItemStack;
-import dev.anvilcraft.lib.recipe.component.ItemIngredientPredicate;
-import dev.dubhe.anvilcraft.AnvilCraft;
 import dev.anvilcraft.kubejs.recipe.AnvilCraftKubeRecipe;
 import dev.anvilcraft.kubejs.recipe.AnvilCraftRecipeComponents;
 import dev.anvilcraft.kubejs.recipe.IDRecipeConstructor;
 import dev.anvilcraft.kubejs.recipe.components.ChanceItemStackComponent;
 import dev.anvilcraft.kubejs.recipe.components.ItemIngredientPredicateComponent;
+import dev.anvilcraft.kubejs.wrapper.TagKeyWrapper;
+import dev.anvilcraft.lib.recipe.component.ChanceItemStack;
+import dev.anvilcraft.lib.recipe.component.ItemIngredientPredicate;
+import dev.dubhe.anvilcraft.AnvilCraft;
 import dev.dubhe.anvilcraft.recipe.anvil.predicate.block.HasCauldron;
 import dev.dubhe.anvilcraft.recipe.anvil.util.WrapUtils;
 import dev.latvian.mods.kubejs.recipe.RecipeKey;
@@ -15,11 +16,9 @@ import dev.latvian.mods.kubejs.recipe.component.ComponentRole;
 import dev.latvian.mods.kubejs.recipe.component.NumberComponent;
 import dev.latvian.mods.kubejs.recipe.schema.KubeRecipeFactory;
 import dev.latvian.mods.kubejs.recipe.schema.RecipeSchema;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.providers.number.BinomialDistributionGenerator;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
@@ -65,15 +64,15 @@ public interface CookingRecipeSchema {
             return this;
         }
 
-        public CookingKubeRecipe requires(TagKey<Item> ingredient, int count) {
+        public CookingKubeRecipe requiresTag(String ingredient, int count) {
             this.computeIfAbsent(INGREDIENTS, ArrayList::new)
-                .add(ItemIngredientPredicate.Builder.item().of(ingredient).withCount(count).build());
+                .add(ItemIngredientPredicate.Builder.item().of(TagKeyWrapper.fromString(ingredient, Registries.ITEM)).withCount(count).build());
             this.save();
             return this;
         }
 
-        public CookingKubeRecipe requires(TagKey<Item> ingredient) {
-            return this.requires(ingredient, 1);
+        public CookingKubeRecipe requiresTag(String ingredient) {
+            return this.requiresTag(ingredient, 1);
         }
 
         public CookingKubeRecipe requires(ItemStack ingredient) {
@@ -81,17 +80,6 @@ public interface CookingRecipeSchema {
                 .add(ItemIngredientPredicate.Builder.item().of(ingredient).build());
             this.save();
             return this;
-        }
-
-        public CookingKubeRecipe requires(ItemLike ingredient, int count) {
-            this.computeIfAbsent(INGREDIENTS, ArrayList::new)
-                .add(ItemIngredientPredicate.Builder.item().of(ingredient).withCount(count).build());
-            this.save();
-            return this;
-        }
-
-        public CookingKubeRecipe requires(ItemLike ingredient) {
-            return this.requires(ingredient, 1);
         }
 
         public CookingKubeRecipe result(ItemStack result, NumberProvider count) {
@@ -107,29 +95,6 @@ public interface CookingRecipeSchema {
 
         public CookingKubeRecipe result(ItemStack result) {
             return this.result(result, ConstantValue.exactly(result.getCount()));
-        }
-
-        public CookingKubeRecipe result(ItemLike result, NumberProvider count) {
-            this.computeIfAbsent(RESULTS, ArrayList::new)
-                .add(ChanceItemStack.of(result, count));
-            this.save();
-            return this;
-        }
-
-        public CookingKubeRecipe result(ItemLike result, int count, float chance) {
-            return this.result(result, BinomialDistributionGenerator.binomial(count, chance));
-        }
-
-        public CookingKubeRecipe result(ItemLike result, int count) {
-            return this.result(result, ConstantValue.exactly(count));
-        }
-
-        public CookingKubeRecipe result(ItemLike result, float chance) {
-            return this.result(result, 1, chance);
-        }
-
-        public CookingKubeRecipe result(ItemLike result) {
-            return this.result(result, ConstantValue.exactly(1.0f));
         }
 
         @Override

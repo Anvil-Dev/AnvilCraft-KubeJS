@@ -1,13 +1,14 @@
 package dev.anvilcraft.kubejs.recipe.anvil;
 
-import dev.anvilcraft.lib.recipe.component.BlockStatePredicate;
-import dev.anvilcraft.lib.recipe.component.ChanceBlockState;
-import dev.dubhe.anvilcraft.AnvilCraft;
 import dev.anvilcraft.kubejs.recipe.AnvilCraftKubeRecipe;
 import dev.anvilcraft.kubejs.recipe.AnvilCraftRecipeComponents;
 import dev.anvilcraft.kubejs.recipe.IDRecipeConstructor;
 import dev.anvilcraft.kubejs.recipe.components.BlockStatePredicateComponent;
 import dev.anvilcraft.kubejs.recipe.components.ChanceBlockStateComponent;
+import dev.anvilcraft.kubejs.wrapper.TagKeyWrapper;
+import dev.anvilcraft.lib.recipe.component.BlockStatePredicate;
+import dev.anvilcraft.lib.recipe.component.ChanceBlockState;
+import dev.dubhe.anvilcraft.AnvilCraft;
 import dev.dubhe.anvilcraft.recipe.anvil.predicate.block.HasCauldron;
 import dev.dubhe.anvilcraft.recipe.anvil.util.WrapUtils;
 import dev.latvian.mods.kubejs.recipe.RecipeKey;
@@ -15,8 +16,8 @@ import dev.latvian.mods.kubejs.recipe.component.ComponentRole;
 import dev.latvian.mods.kubejs.recipe.component.NumberComponent;
 import dev.latvian.mods.kubejs.recipe.schema.KubeRecipeFactory;
 import dev.latvian.mods.kubejs.recipe.schema.RecipeSchema;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 
 public interface SqueezingRecipeSchema {
@@ -62,8 +63,8 @@ public interface SqueezingRecipeSchema {
             return this;
         }
 
-        public final SqueezingKubeRecipe inputTag(TagKey<Block> block) {
-            this.setValue(INGREDIENT, BlockStatePredicate.builder().of(block).build());
+        public final SqueezingKubeRecipe inputTag(String block) {
+            this.setValue(INGREDIENT, BlockStatePredicate.builder().of(TagKeyWrapper.fromString(block, Registries.BLOCK)).build());
             this.save();
             return this;
         }
