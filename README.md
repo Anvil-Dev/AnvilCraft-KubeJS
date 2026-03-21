@@ -1,3 +1,14 @@
+<div align="center">
+
+# AnvilCraft-KubeJS
+
+<img src=".idea/icon.png" style="width: 128px; height: 128px" alt="AnvilCraft-KubeJS Logo">
+
+[![License](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](./LICENSE)
+[![Asset License](https://img.shields.io/badge/Asset%20License-ARR-green.svg)](./ASSETS_LICENSE)
+
+</div>
+
 ## License
 
 * Code unless otherwise stated default to our [LICENSE file(LGPL-3.0)](./LICENSE) here
