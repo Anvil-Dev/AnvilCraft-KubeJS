@@ -16,11 +16,11 @@ import dev.anvilcraft.kubejs.recipe.mineral.MineralFountainRecipeSchema;
 import dev.anvilcraft.kubejs.recipe.multiblock.MultiblockRecipeSchema;
 import dev.anvilcraft.kubejs.recipe.transform.MobTransformRecipeSchema;
 import dev.anvilcraft.kubejs.wrapper.BlockWrapper;
-import dev.anvilcraft.lib.recipe.component.ChanceBlockState;
-import dev.anvilcraft.lib.recipe.component.ChanceItemStack;
-import dev.anvilcraft.lib.recipe.outcome.IRecipeOutcome;
-import dev.anvilcraft.lib.recipe.predicate.IRecipePredicate;
-import dev.anvilcraft.lib.recipe.trigger.IRecipeTrigger;
+import dev.anvilcraft.lib.v2.recipe.outcome.IRecipeOutcome;
+import dev.anvilcraft.lib.v2.recipe.predicate.IRecipePredicate;
+import dev.anvilcraft.lib.v2.recipe.trigger.IRecipeTrigger;
+import dev.anvilcraft.lib.v2.util.predicate.ChanceBlockState;
+import dev.anvilcraft.lib.v2.util.predicate.ChanceItemStack;
 import dev.dubhe.anvilcraft.AnvilCraft;
 import dev.dubhe.anvilcraft.recipe.multiblock.BlockPredicateWithState;
 import dev.dubhe.anvilcraft.recipe.transform.NumericTagValuePredicate;
@@ -31,7 +31,6 @@ import dev.latvian.mods.kubejs.plugin.KubeJSPlugin;
 import dev.latvian.mods.kubejs.recipe.schema.RecipeSchemaRegistry;
 import dev.latvian.mods.kubejs.script.BindingRegistry;
 import dev.latvian.mods.kubejs.script.TypeWrapperRegistry;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 
 public class AnvilCraftKubeJS implements KubeJSPlugin {

@@ -1,10 +1,10 @@
 package dev.anvilcraft.kubejs.recipe;
 
 import com.mojang.serialization.Codec;
-import dev.anvilcraft.lib.recipe.outcome.IRecipeOutcome;
-import dev.anvilcraft.lib.recipe.predicate.IRecipePredicate;
-import dev.anvilcraft.lib.recipe.trigger.IRecipeTrigger;
-import dev.anvilcraft.lib.util.CodecUtil;
+import dev.anvilcraft.lib.v2.codec.CodecUtil;
+import dev.anvilcraft.lib.v2.recipe.outcome.IRecipeOutcome;
+import dev.anvilcraft.lib.v2.recipe.predicate.IRecipePredicate;
+import dev.anvilcraft.lib.v2.recipe.trigger.IRecipeTrigger;
 import dev.dubhe.anvilcraft.AnvilCraft;
 import dev.dubhe.anvilcraft.recipe.multiblock.BlockPattern;
 import dev.dubhe.anvilcraft.recipe.transform.NumericTagValuePredicate;
@@ -168,7 +168,7 @@ public class AnvilCraftRecipeComponents {
 
         @Override
         public Codec<EntityType<?>> codec() {
-            return CodecUtil.ENTITY_CODEC;
+            return CodecUtil.ENTITY;
         }
 
         @Override

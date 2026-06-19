@@ -1,7 +1,7 @@
 package dev.anvilcraft.kubejs.recipe.mineral;
 
-import dev.anvilcraft.lib.recipe.component.BlockStatePredicate;
-import dev.anvilcraft.lib.recipe.component.ChanceBlockState;
+import dev.anvilcraft.lib.v2.util.predicate.BlockStatePredicate;
+import dev.anvilcraft.lib.v2.util.predicate.ChanceBlockState;
 import dev.dubhe.anvilcraft.AnvilCraft;
 import dev.anvilcraft.kubejs.recipe.AnvilCraftRecipeComponents;
 import dev.anvilcraft.kubejs.recipe.IDRecipeConstructor;
