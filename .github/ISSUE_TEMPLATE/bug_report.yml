@@ -2,7 +2,7 @@ name: Bug Report - Bug反馈
 description: Create a report to help us improve. - 反馈问题，帮助我们改进
 title: "[Bug] "
 labels:
-  - 🐛 bug
+  - 🐛 Bug
 
 body:
   - type: markdown
@@ -50,8 +50,8 @@ body:
     attributes:
       label: Version Details - 版本信息
       description: |
-        What version of Mod do you use?
-        你使用的 Mod 版本是什么
+        What versions of AnvilCraft & this addon do you use? It is recommended to enter it in the format `<AnvilCraft version> & <this addon version>`.
+        你使用的铁砧工艺与本附属的版本是什么？建议以 `<铁砧工艺版本> & <本附属版本>` 的格式输入。
       placeholder: Mod version
     validations:
       required: true

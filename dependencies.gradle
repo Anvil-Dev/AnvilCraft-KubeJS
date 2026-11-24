@@ -1,17 +1,20 @@
 dependencies {
-    // Anvil Lib
-    runtimeOnly(libs.anvillib)
-    compileOnly(libs.bundles.anvillib)
+    // AnvilLib
+    api(libs.anvillib)
     interfaceInjectionData(libs.anvillib.recipe)
     interfaceInjectionData(libs.anvillib.moveableEntityBlock)
+
+    // Ageratum
+    compileClasspath(libs.ageratum) { transitive = false }
+    runtimeClasspath(libs.ageratum)
 
     // AnvilCraft
     implementation(libs.anvilcraft) { transitive = false }
     interfaceInjectionData(libs.anvilcraft) { transitive = false }
 
     // KubeJS
-    implementation(libs.rhino){ transitive = false }
-    implementation(libs.kubejs){ transitive = false }
+    implementation(libs.rhino) { transitive = false }
+    implementation(libs.kubejs) { transitive = false }
 
     // ProbeJS
     runtimeOnly(libs.probejs)
